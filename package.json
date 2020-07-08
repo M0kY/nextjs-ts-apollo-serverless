@@ -1,0 +1,37 @@
+{
+  "name": "nextjs-ts-apollo-serverless",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently -r \"npx graphql-codegen --watch\" \"npx next\"",
+    "build": "npm run codegen && next build",
+    "start": "next start",
+    "codegen": "graphql-codegen"
+  },
+  "dependencies": {
+    "@apollo/react-hooks": "3.1.5",
+    "apollo-cache-inmemory": "1.6.6",
+    "apollo-client": "2.6.10",
+    "apollo-link-http": "1.5.17",
+    "graphql": "^15.0.0",
+    "graphql-tag": "2.10.3",
+    "next": "latest",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.16.3",
+    "@graphql-codegen/typescript": "^1.16.3",
+    "@graphql-codegen/typescript-operations": "^1.16.3",
+    "@graphql-codegen/typescript-react-apollo": "^1.16.3",
+    "@types/node": "^14.0.18",
+    "@types/react": "^16.9.41",
+    "@types/react-dom": "^16.9.8",
+    "babel-plugin-graphql-tag": "^2.5.0",
+    "concurrently": "^5.2.0",
+    "serverless": "^1.74.1",
+    "serverless-next.js": "^1.15.0-alpha.2",
+    "typescript": "^3.9.6"
+  },
+  "license": "MIT"
+}

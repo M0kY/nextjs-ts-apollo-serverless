@@ -1,0 +1,9 @@
+nextApp:
+  component: serverless-next.js@1.14.0
+  inputs:
+    bucketName: sample-nextjs-app
+    bucketRegion: eu-central-1
+    description: Sample Next.js App
+    name: sample-nextjs-lambda
+    useServerlessTraceTarget: true
+    verbose: true

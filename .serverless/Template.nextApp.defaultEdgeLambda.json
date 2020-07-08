@@ -1,0 +1,17 @@
+{
+  "name": "7wfoj5b-kb7tr9f",
+  "hash": "BQC4OQvmKe/NTqIgPq60FllgYgZhGJ27vAL60wdfb04=",
+  "description": "Sample Next.js App",
+  "memory": 512,
+  "timeout": 10,
+  "code": "C:\\Users\\Moreno\\Desktop\\repos\\sample-next-app\\.serverless_nextjs\\default-lambda",
+  "shims": [],
+  "handler": "index.handler",
+  "runtime": "nodejs12.x",
+  "env": {},
+  "role": {
+    "arn": "arn:aws:iam::456582705970:role/7wfoj5b-z41juku"
+  },
+  "arn": "arn:aws:lambda:us-east-1:456582705970:function:7wfoj5b-kb7tr9f",
+  "region": "us-east-1"
+}
