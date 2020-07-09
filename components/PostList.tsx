@@ -1,24 +1,8 @@
 import React from 'react';
 import { NetworkStatus } from 'apollo-client';
-import gql from 'graphql-tag';
 import ErrorMessage from './ErrorMessage';
 import PostUpvoter from './PostUpvoter';
 import { useAllPostsQuery } from '../generated/graphql';
-
-export const ALL_POSTS_QUERY = gql`
-  query allPosts($first: Int!, $skip: Int!) {
-    allPosts(orderBy: createdAt_DESC, first: $first, skip: $skip) {
-      id
-      title
-      votes
-      url
-      createdAt
-    }
-    _allPostsMeta {
-      count
-    }
-  }
-`;
 
 export const allPostsQueryVars = {
   skip: 0,
