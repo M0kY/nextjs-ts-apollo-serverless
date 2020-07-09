@@ -11,6 +11,8 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
       AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+      SERVERLESS_STATE_BUCKET_NAME: ${{secrets.SERVERLESS_STATE_BUCKET_NAME}}
+      ENVIRONMENT: ${{secrets.ENVIRONMENT}}
 
     steps:
       - uses: actions/checkout@v1
@@ -22,7 +24,7 @@ jobs:
         run: npm install
 
       - name: Download `.serverless` state from S3
-        run: aws s3 sync s3://sample-next-app-env/prod/.serverless .serverless --delete
+        run: aws s3 sync s3://$SERVERLESS_STATE_BUCKET_NAME/$ENVIRONMENT/.serverless .serverless --delete
 
       - name: Deploy to AWS
         run: |
@@ -32,4 +34,4 @@ jobs:
           npx -c serverless
 
       - name: Upload `.serverless` state to S3
-        run: aws s3 sync .serverless s3://sample-next-app-env/prod/.serverless --delete
+        run: aws s3 sync .serverless s3://$SERVERLESS_STATE_BUCKET_NAME/$ENVIRONMENT/.serverless --delete
