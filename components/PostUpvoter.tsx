@@ -1,19 +1,8 @@
 import React from 'react';
-import { useMutation } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
+import { useUpdatePostMutation } from '../generated/graphql';
 
-const UPDATE_POST_MUTATION = gql`
-  mutation updatePost($id: ID!, $votes: Int) {
-    updatePost(id: $id, votes: $votes) {
-      __typename
-      id
-      votes
-    }
-  }
-`;
-
-export default function PostUpvoter({ votes, id }: { votes: number; id: number }) {
-  const [updatePost] = useMutation(UPDATE_POST_MUTATION);
+export default function PostUpvoter({ votes, id }: { votes: number; id: string }) {
+  const [updatePost] = useUpdatePostMutation();
 
   const upvotePost = () => {
     updatePost({

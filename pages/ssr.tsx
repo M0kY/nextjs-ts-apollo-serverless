@@ -5,8 +5,9 @@ import App from '../components/App';
 import InfoBox from '../components/InfoBox';
 import Header from '../components/Header';
 import Submit from '../components/Submit';
-import PostList, { ALL_POSTS_QUERY, allPostsQueryVars } from '../components/PostList';
+import PostList, { allPostsQueryVars } from '../components/PostList';
 import { initializeApollo } from '../lib/apolloClient';
+import { AllPostsDocument } from '../generated/graphql';
 
 type Props = {
   initialApolloState: NormalizedCacheObject;
@@ -30,7 +31,7 @@ export async function getServerSideProps() {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({
-    query: ALL_POSTS_QUERY,
+    query: AllPostsDocument,
     variables: allPostsQueryVars,
   });
 

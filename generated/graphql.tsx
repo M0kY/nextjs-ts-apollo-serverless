@@ -1513,6 +1513,20 @@ export type AllPostsQuery = (
   ) }
 );
 
+export type UpdatePostMutationVariables = Exact<{
+  id: Scalars['ID'];
+  votes?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type UpdatePostMutation = (
+  { __typename?: 'Mutation' }
+  & { updatePost?: Maybe<(
+    { __typename: 'Post' }
+    & Pick<Post, 'id' | 'votes'>
+  )> }
+);
+
 
 export const CreatePostDocument = gql`
     mutation createPost($title: String!, $url: String!) {
@@ -1591,3 +1605,37 @@ export function useAllPostsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHoo
 export type AllPostsQueryHookResult = ReturnType<typeof useAllPostsQuery>;
 export type AllPostsLazyQueryHookResult = ReturnType<typeof useAllPostsLazyQuery>;
 export type AllPostsQueryResult = ApolloReactCommon.QueryResult<AllPostsQuery, AllPostsQueryVariables>;
+export const UpdatePostDocument = gql`
+    mutation updatePost($id: ID!, $votes: Int) {
+  updatePost(id: $id, votes: $votes) {
+    __typename
+    id
+    votes
+  }
+}
+    `;
+
+/**
+ * __useUpdatePostMutation__
+ *
+ * To run a mutation, you first call `useUpdatePostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdatePostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updatePostMutation, { data, loading, error }] = useUpdatePostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      votes: // value for 'votes'
+ *   },
+ * });
+ */
+export function useUpdatePostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UpdatePostMutation, UpdatePostMutationVariables>) {
+        return ApolloReactHooks.useMutation<UpdatePostMutation, UpdatePostMutationVariables>(UpdatePostDocument, baseOptions);
+      }
+export type UpdatePostMutationHookResult = ReturnType<typeof useUpdatePostMutation>;
+export type UpdatePostMutationResult = ApolloReactCommon.MutationResult<UpdatePostMutation>;
+export type UpdatePostMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdatePostMutation, UpdatePostMutationVariables>;
