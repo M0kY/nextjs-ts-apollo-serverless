@@ -13,23 +13,23 @@ Before deploying create an S3 bucket (in this example `sample-next-app-env`) for
 
 Another S3 bucket gets created for storing static assets.
 
-![architecture](https://github.com/serverless-nextjs/serverless-next.js/blob/master/arch_no_grid.png)
+![architecture](./arch_no_grid.png)
 
 Four Cache Behaviours are created in CloudFront.
 
-The first two \_next/_ and static/_ forward the requests to S3.
+The first two `\_next/_` and `static/_` forward the requests to S3.
 
 The third is associated to a lambda function which is responsible for handling three types of requests.
 
-1. Server side rendered page. Any page that defines getInitialProps method will be rendered at this level and the response is returned immediately to the user.
+1. Server side rendered page. Any page that defines `getInitialProps` or `getServerSideProps` method will be rendered at this level and the response is returned immediately to the user.
 
 2. Statically optimised page. Requests to pages that were pre-compiled by next to HTML are forwarded to S3.
 
-3. Public resources. Requests to root level resources like /robots.txt, /favicon.ico, /manifest.json, etc. These are forwarded to S3.
+3. Public resources. Requests to root level resources like `/robots.txt`, `/favicon.ico`, `/manifest.json`, etc. These are forwarded to S3.
 
-The reason why 2. and 3. have to go through Lambda@Edge first is because the routes don't conform to a pattern like \_next/_ or static/_. Also, one cache behaviour per route is a bad idea because CloudFront only allows 25 per distribution.
+The reason why `2.` and `3.` have to go through `Lambda@Edge` first is because the routes don't conform to a pattern like `\_next/_` or `static/_`. Also, one cache behaviour per route is a bad idea because CloudFront only allows 25 per distribution.
 
-The fourth cache behaviour handles next API requests api/\*.
+The fourth cache behaviour handles next API requests `api/*`.
 
 ## Deployment
 
