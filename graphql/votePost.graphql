@@ -1,0 +1,7 @@
+mutation votePost($id: String!) {
+  votePost(id: $id) {
+    __typename
+    id
+    votes
+  }
+}

@@ -1,5 +1,5 @@
 overwrite: true
-schema: 'https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn'
+schema: 'https://nextjs-graphql-with-prisma-simple.vercel.app/api'
 documents: 'graphql/**/*.graphql' # parse graphql operations in matching files
 generates:
   generated/graphql.tsx: # location for generated types, hooks and components

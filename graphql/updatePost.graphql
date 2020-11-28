@@ -1,7 +1,0 @@
-mutation updatePost($id: ID!, $votes: Int) {
-  updatePost(id: $id, votes: $votes) {
-    __typename
-    id
-    votes
-  }
-}

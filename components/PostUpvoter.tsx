@@ -1,18 +1,17 @@
 import React from 'react';
-import { useUpdatePostMutation } from '../generated/graphql';
+import { useVotePostMutation } from '../generated/graphql';
 
 export default function PostUpvoter({ votes, id }: { votes: number; id: string }) {
-  const [updatePost] = useUpdatePostMutation();
+  const [votePost] = useVotePostMutation();
 
   const upvotePost = () => {
-    updatePost({
+    votePost({
       variables: {
         id,
-        votes: votes + 1,
       },
       optimisticResponse: {
         __typename: 'Mutation',
-        updatePost: {
+        votePost: {
           __typename: 'Post',
           id,
           votes: votes + 1,
