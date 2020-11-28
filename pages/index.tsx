@@ -11,7 +11,7 @@ import { AllPostsDocument } from '../generated/graphql';
 
 type Props = {
   initialApolloState: NormalizedCacheObject;
-  unstable_revalidate: number;
+  revalidate: number;
 };
 
 const IndexPage: React.FC<Props> = () => (
@@ -38,7 +38,7 @@ export async function getStaticProps() {
     props: {
       initialApolloState: apolloClient.cache.extract(),
     },
-    unstable_revalidate: 1,
+    revalidate: 1,
   };
 }
 
